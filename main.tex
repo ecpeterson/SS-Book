@@ -1,0 +1,47 @@
+\documentclass[letter]{book}
+
+\usepackage{hyperref}
+
+%% symbol definitions
+\RequirePackage{ss-common}
+
+%% book formatting commands
+\pagestyle{headings}
+\usepackage{lettrine}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[urw-garamond]{mathdesign}
+% command to move to the next left-facing page
+\makeatletter
+\def\advancetoleft{\if@openright\clearpage\else\cleardoublepage\fi}
+\makeatother
+
+\title{Computations with spectral sequences}
+\author{Eric Peterson}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\clearpage
+
+\input{foreword}
+\include{general}
+\include{AHS}
+\include{EM}
+\include{cosimp}
+\include{adams}
+\include{fixedp}
+\include{pictures}
+
+--- unsorted ---
+The May / Bockstein spectral sequences.  This seems hard to produce a good example of, since it mostly organizes computation rather than easing it in any particular way, but maybe it's worth it anyhow.  The organization is pretty cool.
+The tangent spectral sequence: formal groups and tangent spaces, $H^*(F; TG) \Rightarrow H^*(F; G)$
+Homotopy spectral sequences of spaces (details with $\pi_0$ and $\pi_1$, see Homotopy limits, completions, and localizations by Bousfield and Kan)
+Unbased spectral sequences (choose basepoints iteratively, kind of. See Bousfield's Homotopy spectral sequences and obstructions, which does this for unbased cosimplicial spaces.)
+Dan Dugger has a paper titled Multiplicative structures on homotopy spectral sequences. Could be worth looking at.
+\url{http://neil-strickland.staff.shef.ac.uk/courses/bestiary/ss.pdf}
+Pictures of $\mathcal{A}(1)$-resolutions at \url{http://math.wayne.edu/art/}
+
+\end{document}

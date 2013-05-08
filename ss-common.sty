@@ -1,0 +1,42 @@
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{matrix,positioning}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\CP}{\C\mathrm{P}}
+\newcommand{\RP}{\R\mathrm{P}}
+\newcommand{\A}{\mathcal{A}}
+
+\DeclareMathOperator{\pt}{pt}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\colim}{colim}
+
+\newcommand{\Loops}{\Omega}
+\newcommand{\Susp}{\Sigma}
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+\newcommand{\convergeto}{\Rightarrow}
+\newcommand{\from}{\leftarrow}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\twoheadrightarrow}
+
+\newcommand{\TODO}{\textbf{TODO}}
+
+\newcommand{\CatOf}[1]{\mathsf{#1}}
+\newcommand{\defn}[1]{\textit{#1}}
+
+\tikzset{dash line/.style={densely dotted}}
+\tikzset{under line/.style={-stealth}}
+\tikzset{normal line/.style={under line,
+           preaction={draw=white, -, 
+           line width=6pt}}}
+\tikzset{onto/.style={normal line,->>}}
+\tikzset{into/.style={normal line,>->}}
+\tikzset{equal/.style={double,-}}

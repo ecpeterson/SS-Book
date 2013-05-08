@@ -1,0 +1,58 @@
+\chapter{Atiyah-Hirzebruch-Serre}
+
+\section{The Atiyah-Hirzebruch spectral sequence}
+
+The essential building blocks of the spaces in non-pathological topology (including algebraic topology) are the unit balls $D^n$ of dimension $n$, and their surface spheres $S^{d-1}$ of dimension $(d-1)$.  A topological space $X$ is said to be a CW-complex when it can be decomposed into a sequence of spaces $X^{(d)}$, called $d$-skeleta\footnote{Skeleta is the mathematician's plural of skeleton.}, such that $X^{(-1)} = \pt$ a single point and $X^{(d+1)}$ is formed from $X^{(d)}$ by gluing in (unpointed) $(d+1)$-balls along their $d$-spherical surface shells, and such that $X$ is given as the colimit of the $X^{(d)}$ as $d$ grows large.  These are somehow the most reasonable spaces on which we can ``do homotopy theory,'' and from here on out all our spaces will be assumed to be CW-complexes\footnote{The exact decomposition into the spaces $X^{(d)}$ isn't so important, just that there exists one.}.
+
+This gives an ascending filtration of $X$ by $X^{(d)}$ which is Hausdorff (the condition on $X^{(-1)}$) and exhaustive (the condition $X = \colim_d X^{(d)}$).  Moreover, the filtration quotients are easy to compute: the cofiber of the map $X^{(d-1)} \into X^{(d)}$ collapses the $(d-1)$-skeleton to a point, to which all the $d$-cells get attached, resulting in a bouquet of spheres $X^{(d)} / X^{(d-1)} \simeq \bigvee_\alpha S^d_\alpha$ in filtration grading $d$.  Selecting our favorite homology theory $h_*$ and cohomology theory $h^*$, this gives a pair of spectral sequences with signatures
+\begin{align*}
+E^1_{s, t} = h_s \left(\bigvee_\alpha S^t_\alpha\right) = h_{s-t}(\pt) & \convergeto h_s X, & d^r: E^1_{s, t} & \to E^1_{s-1, t-r}, \\
+E_1^{s, t} = h^s \left( \bigvee_\alpha S^t_\alpha \right) = h^{s-t}(\pt) & \convergeto h^s X, & d_r: E_1^{s, t} & \to E_1^{s+1, t+r}.
+\end{align*}
+In fact, we can do better: the differential on the first pages of these spectral sequences is exactly the differential that appears in the $(s-t)$th degree of the cellular chain complex for computing cohomology with $h^{s-t}(\pt)$-coefficients.  This spectral sequence also carries the structure of a $h^*(\pt)$-module in the case that $h$ takes its values in rings, though not with this grading.  \TODO: Straighten out this grading discussion.  Putting all this together produces the more familiar form of these spectral sequences:
+\begin{align*}
+E^2_{p, q} = H^{cell}_p(X; h_q(\pt)) & \convergeto H_{p+q} X, & d^r_{p, q}: E^r_{p, q} & \to E^r_{p-r, q+r-1}, \\
+E_2^{p, q} = H_{cell}^p(X; h^q(\pt)) & \convergeto H^{p+q} X, & d_r^{p, q}: E_r^{p, q} & \to E_r^{p+r, q-r+1}.
+\end{align*}
+
+\section{$H^* \CP^\infty$}
+
+The motivic cell decomposition.
+
+\section{$H^* \RP^\infty$}
+
+The motivic cell decomposition.
+
+\section{$KU^* B\Z/2$}
+
+Even-concentrated, but has extension problems.  See Strickland's bestiary.  This might be hard to do before the Gysin sequence description of $h^* \RP^\infty$...
+
+\section{The Serre spectral sequence}
+
+The $E_1$-page is easy, but $d_1$ is hard.  Multiplicative structure.
+
+\input{cpinfty}
+
+\section{$H^* \RP^\infty$ and Gysin sequences}
+
+$K(n)^* B\Z/n$ too?  Then, deducing differentials in the AHSS for $K(n)^* B\Z/n$?
+
+\input{bsu}
+
+$H^* U(n)$, $H^* BU(n)$, $H^* SU(n)$, $H^* BSU(n)$, $H^* BU$, $H^* BSU$
+
+\section{Loopspaces of spheres}
+
+$H^* \Loops S^{2n}$, $H^* \Loops S^{2n+1}$, $H^* \Loops^2 S^{2n+1}$.  Edge homomorphisms.
+
+\section{The Steenrod algebra}
+
+Serre's $H^*(K(\Z/2, q); \F_2)$ and $H^*(K(\Z, q); \F_2)$
+
+\section{$H^*(BU\<6\>; \F_2)$}
+
+Need Kudo transgression.
+
+\section{Unstable homotopy groups of $S^3$}
+
+$\pi_3$, $\pi_4$, $\pi_5 L_{(2)} S^3$

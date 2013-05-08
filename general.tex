@@ -1,0 +1,142 @@
+\chapter{Spectral sequences in general}
+
+\lettrine[lines=1]{B}{efore} we start in on computations with spectral sequences, we should take a moment to outline what they are and where they come from.  Once we've pinned these down, we will also mention some of the most common complications and useful structures. 
+
+\section{Homology theories}
+
+Spectral sequences arise naturally in homological algebra, which is the study in the abstract of where homology functors come from.  Since this book is geared toward algebraic topologists, we will not be so abstract; instead, a (reduced) homology functor for us is a sequence of functors $(\tilde H_n)_{n \in \Z}: Ho(\CatOf{PointedSpaces}) \to \CatOf{AbelianGroups}$ from the category of pointed homotopy types to abelian groups which collectively satisfy the following two axioms:
+\begin{itemize}
+\item Wedge sum: For any collection of spaces\footnote{Throughout this book, we will suppress the basepoint we carry along with our spaces.  It's an important technicality, but it's not worth dwelling on constantly by bringing into the notation.} $\{X_\alpha\}_{\alpha \in A}$, we have a natural isomorphism \[\tilde H_n \left( \bigvee_\alpha X_\alpha \right) \cong \bigoplus_\alpha \tilde H_n X_\alpha.\]
+\item Triangulation: For $A$ a subspace\footnote{We require $i: A \to X$ to be quite reasonable, namely a cofibration.  For example, the inclusion of a subcomplex counts.} of $X$, the ``short exact sequence'' \[A \xrightarrow{i} X \xrightarrow{p} X/A\] of spaces begets a long exact sequence
+\begin{center}
+\begin{tikzpicture}
+    \matrix (m) [matrix of math nodes,
+        row sep=2.2em, column sep=1.5em,
+        text height=1.5ex, text depth=0.25ex]{
+       &              & \cdots       & \tilde H_{n+1}(X/A) & \\
+       & \tilde H_n A & \tilde H_n X & \tilde H_n(X/A) & \\
+       & H_{n-1} A    & \cdots. \\
+    };
+    \path[normal line]
+        (m-1-3) edge (m-1-4)
+        (m-1-4) edge[out=0,in=180] (m-2-2)
+        (m-2-2) edge (m-2-3)
+        (m-2-3) edge (m-2-4)
+        (m-2-4) edge[out=0,in=180] (m-3-2)
+        (m-3-2) edge (m-3-3);
+\end{tikzpicture}
+\end{center}
+The middle maps are specified by functoriality, but the maps labeled $\partial$ are new data.
+\end{itemize}
+\TODO: Mention unreduced.
+
+These axioms alone can be used to compute a small handful of things.  For instance, the first axiom tells us that the homology of a point must vanish, since $\pt \vee \pt \simeq \pt$.  To see the utility of the second axiom, let $X$ be a $(d+1)$-dimensional hemisphere, and let $A$ be the inclusion of the equatorial band, itself a $d$-dimensional sphere.  The space $X$ is homotopy equivalent to a point, so has vanishing homology, whereas the quotient $X / A$ is homeomorphic to a $(d+1)$-dimensional sphere.  The long exact sequence in homology reads \[\cdots \to \tilde H_{n+1} S^{d+1} \xrightarrow{\partial} \tilde H_n S^d \xrightarrow{\tilde H_n i} \tilde H_n \pt \xrightarrow{\tilde H_n p} \tilde H_n S^{d+1} \xrightarrow{\partial} \tilde H_{n-1} S^d \to \cdots.\]  Hence, the homology of the $(d+1)$-sphere is exactly the homology of the $d$-sphere, shifted up by one degree.
+
+\TODO: Mention cohomology.
+\TODO: A useful fact is $H_* \colim F = \colim H_* F$.
+
+\section{Filtrations and spectral sequences}
+
+This is all well and good, and one can compute a great many things manually by specifying $H_* S^0$ and working with these two axioms from there.  For more complex situations, manual computations become tedious, and this is where spectral sequences enter the picture.  To perform the homology computation of a complex space $X$, we must first break it down into a sequence of simple spaces $X_q$, each including into the next.  Not only should all of them include into $X$, but we should have $X = \colim_q X_q$.  On the other end, we require $X_{-1} = \pt$.  Here is a diagram of the situation:
+\begin{center}
+\begin{tikzpicture}
+    \matrix (m) [matrix of math nodes,
+         row sep=3em, column sep=3em,
+         text height=1.5ex,
+         text depth=0.25ex]{
+             \cdots & X_{q-1} & X_q & X_{q+1} & \cdots & X. \\
+    };
+    \path[normal line]
+	    (m-1-1) edge[into] (m-1-2)
+		(m-1-2) edge[into] node[above]{$i_{q-1}$} (m-1-3)
+		(m-1-3) edge[into] node[above]{$i_q$} (m-1-4)
+		(m-1-4) edge[into] (m-1-5)
+		(m-1-5) edge[into] (m-1-6);
+\end{tikzpicture}
+\end{center}
+We're seeking to relate the homology of $X$ to the homologies of these pieces $X_q$.  Looking back at our axioms for a homology theory, we do see that inclusions play a special role in the triangulation axiom, but to apply the triangulation axiom we must also consider various quotients.  We extend our diagram to match:
+\begin{center}
+\begin{tikzpicture}
+    \matrix (m) [matrix of math nodes,
+         row sep=3em, column sep=3em,
+         text height=1.5ex,
+         text depth=0.25ex]{
+             \cdots & X_{q-1} & X_q & X_{q+1} & \cdots & X. \\
+			        & F_{q-1} & F_q & F_{q+1} \\
+    };
+    \path[normal line]
+	    (m-1-1) edge[into] (m-1-2)
+		(m-1-2) edge[into] node[above]{$i_{q-1}$} (m-1-3)
+		        edge[onto] node[right]{$p_{q-1}$} (m-2-2)
+		(m-1-3) edge[into] node[above]{$i_q$} (m-1-4)
+		        edge[onto] node[right]{$p_q$} (m-2-3)
+		(m-1-4) edge[into] (m-1-5)
+		        edge[onto] node[right]{$p_{q+1}$} (m-2-4)
+		(m-1-5) edge[into] (m-1-6);
+\end{tikzpicture}
+\end{center}
+Now we apply homology $\tilde H^*$ to our diagram, and in doing so we also apply the triangulation axiom to each of these angled arms:
+\begin{center}
+\begin{tikzpicture}
+    \matrix (m) [matrix of math nodes,
+         row sep=3em, column sep=3em,
+         text height=1.5ex,
+         text depth=0.25ex]{
+             \cdots & \tilde H_* X_{q-1} & \tilde H_* X_q & \tilde H_* X_{q+1} & \cdots & \tilde H_* X. \\
+			        & \tilde H_* F_{q-1} & \tilde H_* F_q & \tilde H_* F_{q+1} \\
+    };
+    \path[normal line]
+	    (m-1-1) edge (m-1-2)
+		(m-1-2) edge node[above]{$\tilde H_* i_{q-1}$} (m-1-3)
+		        edge node[right]{$\tilde H_* p_{q-1}$} (m-2-2)
+		(m-1-3) edge node[above]{$\tilde H_* i_q$} (m-1-4)
+		        edge node[right]{$\tilde H_* p_q$} (m-2-3)
+		(m-1-4) edge (m-1-5)
+		        edge node[right]{$\tilde H_* p_{q+1}$} (m-2-4)
+		(m-1-5) edge (m-1-6)
+		(m-2-3) edge node[above]{$\partial$} (m-1-2)
+		(m-2-4) edge node[above]{$\partial$} (m-1-3);
+\end{tikzpicture}
+\end{center}
+Note that each of these maps $\partial$ is \emph{not} degree-preserving\footnote{A key to successfully doing homological algebra successfully is to suppress as many indices as possible, so we don't draw this in the diagram.} but shifts the degree down by $1$.
+
+Now that we have this picture, we are tasked with tying this discussion up and saying something meaningful about $\tilde H_* X$.  Before formalizing the process, we will describe its goal.  Suppose that we pick some homology class $\alpha \in \tilde H_* F_q$; the question we then pose is whether $\alpha$ is in some way visible in $H_* X$.  The only map we have in front of us by which we can push back up into the $X$es is $\partial$, so we produce an element $\partial \alpha \in H_{*-1} X_{q-1}$.  Na\"ively, we'd want to then push forward into $H_* X$ by tracking the maps to the right, but because the triangles in our diagram are exact we immediately know that $(\tilde H_* i_q) \circ \partial \alpha = 0$.  We must be more creative.
+
+Another thing we could try to do is to find an element $\beta \in \tilde H_* X_q$ for which $(\tilde H_* p_q) \beta = \alpha$.  Again employing exactness of the triangle, such a $\beta$ exists exactly when $\partial \alpha = 0$.  However, at the moment we have no way of telling whether this is the case, since the rules of the game are that we only understand the groups $\tilde H_* F_*$.  So, to get back into the land of things we understand, we follow the vertical map down to produce $(\tilde H_* p_q) \circ \partial \alpha$.
+
+At this point there are two options.  First, $(\tilde H_* p_q) \circ \partial \alpha$ could be nonzero, in which case $\partial \alpha$ itself must have been nonzero, and there is no hope for producing $\beta$.  In this case, we should discard $\alpha$ as an unfortunate artifact of the filtering process, without contribution to the total homology.  On the other hand, if $(\tilde H_* p_q) \circ \partial \alpha = 0$, it's possible that either $\partial \alpha = 0$ or merely that $\partial \alpha \in \ker \tilde H_* p_q$.  But, in either case, we can employ the exactness of the next triangle in the sequence to preimage the element $\partial \alpha$ through the map $\tilde H_* i_{q-1}$ to produce an element $(\tilde H_* i_{q-1})^{-1} \partial \alpha$, with which we can play the same game.
+
+Eventually, however, we will hit the bottom of our filtration.  If we can play this game all the way back to then, then we have produced an element $\gamma = (\tilde H_* i_*)^{\circ (-q)} \partial \alpha$ for which $(\tilde H_* i_*)^{\circ q} \gamma = \alpha$.  However, because $X_{-1} = \pt$, we know that $\gamma = 0$, and hence $\partial \alpha = (\tilde H_* i_*)^{\circ q}(0) = 0$, and we win --- $\beta$ exists!
+
+This process is formalized by packaging up these composites.  We write $E^1_{*, q} = \tilde H_* F_q$, and the map $(\tilde H_* p_*) \circ \partial$ is called $d^1: E^1_{*, q} \to E^1_{*-1, q-1}$.  One quickly checks that $d^1$ is a differential, as the two maps in the middle of $d^1 \circ d^1 = (\tilde H_* p_*) \circ \partial \circ (\tilde H_* p_*) \circ \partial$ belong to the same exact triangle, and hence compose to zero.  We are interested only in keeping classes in the kernel of the outgoing $d^1$ while deleting all the classes in the kernel of the incoming $d^1$, and so advancing to the next stage in the game corresponds exactly to taking cohomology against the differentials $d^1$.  This cohomology group we label $E^2_{*, q}$.  By a small miracle, it turns out that this same quotient is what is required to eliminate the indeterminacy in picking the preimage $(\tilde H_* p_{q-1}) \circ (\tilde H_* i_{q-1})^{-1} \circ \partial \alpha$, and this composite we label $d^2: E^2_{*, q} \to E^2_{*-1, q-2}$.  This pattern in producing differentials and computing their cohomology continues, and in general we have groups $E^r_{*, q}$, which are sub-quotients of $E^{r-1}_{*, q}$, and differentials $d^r: E^r_{*, q} \to E^r_{*-1, q-r}$.  The index $r$ is called the ``page'' or ``sheet,'' and altogether this data forms a ``spectral sequence.''
+
+\section{Convergence and the endgame}
+
+One can produce spectral sequences for cohomology as well, using an identical setup.  The only difference is in the endgame: in homology, we kept lowering filtration degree, so we eventually hit the bottom and deduced something about our element $\alpha$.  In cohomology, we will instead \emph{raise} filtration degree, and so we will never hit bottom and be able to conclude something solid.  We will, however, continuously march toward $\tilde H^* X$ with which filtration degree we climb up, and so our spectral sequence will compute something about $\lim_q H^* X_q$, the limit of the cohomology groups.  Whether this compares well with $H^* X$ is one of the things we discuss now.
+
+The general theory of spectral sequences is quite wild, and it is possible to construct spectral sequences not arising naturally from a filtration in the way we've described.  However, almost all of the examples witnessed in the wild (and certainly those with which one should learn to compute) do come from this construction, and assuming we're in this situation simplifies the theory of convergence considerably.
+
+Label the groups $H_* X_q$ of the above construction by $F_{*, q}$, and label $H_* X$ by $G_*$.  The spectral sequence is said to be \ldots
+\begin{itemize}
+\item \ldots \defn{weakly convergent} (to $G_*$) if $\colim_q F_{*, q} = G_*$ and $E^\infty_q = F_{*, q} / F_{*, q-1}$.
+\item \ldots \defn{convergent} if it is weakly convergent and furthermore $\lim_q F_{*, q} = 0$.
+\item \ldots \defn{strongly convergent} if it is convergent and furthermore $\lim^1_q F_{*, q} = 0$.
+\item \ldots \defn{conditionally convergent} if $\lim F_{*, q} = 0$.\footnote{In this situation, the filtration is said to be \defn{Hausdorff}.}
+\end{itemize}
+
+The first three conditions neatly summarize what extra steps we will need to take in the end to compare the ``result'' of our spectral sequence with the target of convergence.  In the case of strong convergence, we need only to deal with extension problems.  The individual homology groups $G_p$ are, by construction, sliced up and scattered through the homology groups $\{E^\infty_{p, q}\}_q$ as $q$ ranges.  To recover $G_p$ from this sequence, we are faced with a nest of extension problems: there is some intermediate group extending $E^\infty_{p, 0}$ by $E^\infty_{p, 1}$, which in turn has an intermediate group extending it by $E^\infty_{p, 2}$, and so forth.  In the strongly convergent case, the limit of this process yields $G_p$.
+
+In the convergent case, we are faced exactly with the issue presented by the cohomological spectral sequence above.  We can attempt to solve the extension problem, just as before, but the resulting groups $G'_p$ sit in a short exact sequence $0 \to G'_p \to G_p \to \lim^1_q F_{*, q} \to 0$ obstructing honest equality, so we must also address this.
+
+In the weakly convergent case, we are faced with the above two issues, but we additionally ... uh actually I'm not sure what we have to do.  Throw in the intersection as a summand?
+
+The conditionally convergent case is differently flavored from the rest.  Conditional convergence on its own is worse than weak convergence, but it appears frequently, and there are various extra mild assumptions, easily verified in practice, that turn conditional convergence into strong convergence.  For example, if $F_{*, q}$ stabilizes for $q \ll 0$, the spectral sequence converges conditionally, and if $\lim^1_q E^\infty_{*, q} = 0$, the convergence is strong.
+
+There are two more vocabulary words worth knowing: in the case $X_{-1} = \pt$, the spectral sequence lives entirely on one half of the full doubly-integer-indexed plane, and so is called a half-plane spectral sequence.  In the homological case, where the differentials eventually land in the unoccupied half-plane, the associated spectral sequence is said to have \defn{exiting differentials}.  In the cohomological case, where all differentials eventually land in the occupied half-plane, the associated spectral sequence is said to have \defn{entering differentials}.
+
+In the exiting case, we have few convergence issues to worry about: provided the filtration is Hausdorff, we have strong convergence.  If the differentials are entering, however, we need conditional convergence together with the vanishing $\lim^1$-term to get strong convergence.
+
+
+\section{Grading conventions and multiplicative structures}
+
+Pairings.  The Leibniz rule.

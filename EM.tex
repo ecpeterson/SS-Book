@@ -1,0 +1,32 @@
+\chapter{Eilenberg-Moore}
+
+Filtration of a bicomplex.  Take a homotopy pullback square $F \to E \to B$ and $F \to X \to B$.  On cohomology, we don't get a pushout; instead, on the level of the derived category of chain complexes, we are taking the derived pushout, giving a spectral sequence from the tensor product of chain complexes to the chain complex of $F$. [[NOTE: How does this need to be graded for multiplicativity?]]
+
+\section{Computing $\Tor$ with Tate resolutions}
+
+In the previous section, it was mentioned that the Eilenberg-Moore spectral sequence is compatible with the multiplicative structure on $\Tor$.  If this is the input to the spectral sequence, then our next question should be: how do we compute this product structure?  Or, even more basically, how do we compute $\Tor$ at all?  In the specific case of $R$ a Noetherian ring and the groups $\Tor^R_{*, *}(R/M, R/N)$, Tate has outlined an extremely useful and simple process for performing this computation, by constructing a DGA whose underlying chain complex is a free resolution of $R/M$.
+
+Let's compute two examples to see Tate's method in action.  First, let's select $R = \Z[x]$, $M = N = \<x\>$, so that we're investigating $\Tor^{\Z[x]}(\Z, \Z)$.  Tate's resolution, like any resolution, begins with the left-hand argument $\Z$, depicted at left as a dot.
+
+At the next stage in the resolution, we introduce a single copy of $R$, which surjects onto $R/M$ by the quotient map $R \onto R/M$.  We haven't deviated from the usual process for building a free resolution yet, but Tate's big idea is that we should be giving these things names as algebra generators as we go.  Since this copy of $R$ lives in degree $0$ of the resolution, and we expect an $R$-algebra in the end, we attach the name ``$1$'' to it, so that its various elements are of the form $r \cdot 1$ for $r \in R$.
+
+To perform the next step, we investigate the kernel of the previous step, depicted beneath the resolution.  The kernel here is the submodule of multiples of $x$, and so we introduce a shifted copy of $R$ in resolution degree $1$, mapping isomorphically into the kernel.  Again, Tate suggests that we give this a name, so we make one up and call it ``$a$''.  The differential connecting degree $1$ to degree $0$ is then described by $da = x$.
+
+At this point, the resolution terminates, since the kernel at filtration degree $1$ is empty.  To compute $\Tor^{\Z[x]}(\Z, \Z)$, we drop the original $\Z$ from the resolution, tensor with $\Z$, and compute the cohomology of the resulting complex.  Since all the differentials hit multiples of $x$, they vanish, and the differential structure evaporates.  The algebra structure, however, does not disappear, and we compute $\Tor^{\Z[x]}(\Z, \Z) = \Z[a] / \<a^2\>$, referred to as an exterior algebra and denoted $\Lambda_{\Z}[x]$.
+
+This example was too short to get interesting, so let's work through another: $\Tor^{\Lambda[x]}(\Z, \Z)$.  
+
+\section{$H^*(\Loops S^{2n+1}; \F_p)$}
+
+$\Loops S^{2n+1}$ using the square $\Loops S^{2n+1} \to \pt \to S^{2n+1}$ and $\Loops S^{2n+1} \to \pt \to S^{2n+1}$.
+
+\section{Complex projective spaces}
+
+Structure of the spectral sequence for $\pt \to \CP^\infty$ pulled back to $S^{2n+1} \to \CP^n$.
+
+\section{The James construction}
+
+The James construction and its filtration, comparison with the particular pullback square $\Loops \Susp X \to \pt \to \Susp X$.
+
+\section{$H^* BU\<6\>$ redux}
+

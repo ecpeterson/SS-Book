@@ -1,0 +1,22 @@
+\chapter{Homotopy fixed points}
+
+Introduction: $H^p(G; \pi_q X) \convergeto \pi_{p-q} X^{hG}$. It comes from filtering $EG_+$ in $X^{hG} = \Hom(EG_+, X)$ using the cellular filtration; the $E_1$-page of the filtration quotients then looks like the cobar complex computing group cohomology for $\pi_q X$ considered as a G-module (so, remembering the $G$-action on the underlying spectrum!).  Alternatively, $X^{hG}$ can be written as a homotopy limit diagram over some category built from $G$, which should give an identical construction after piecing through a construction of 'homotopy limit' using a bar-type construction.  Needs the Adams grading for the multiplicative structure.
+
+\section{Computing $H^*_{gp}(C_n, M)$}
+
+Computing the cohomology of cyclic groups with twisted coefficients is discussed in Weibel 6.2.1-6.2.2; there's a small, periodic resolution that is much better than the cobar construction.
+
+\section{$\pi_* KU^{hC_2}$}
+
+Needs $H^*(C_2; pi_* KU)$, which means knowing $H^*(\RP^\infty; \Z) = (\Z, 0, \Z/2, 0, \Z/2, 0, \ldots)$ in the untwisted case and $H^*(C_2; \Z) = (0, \Z/2, 0, \Z/2, 0, \ldots)$ in the twisted case.  Has a 'multiplication-by-$\eta$' structure that's important for propagating differentials.  The one generating differential is that the guy in degree $(4, 0)$ hits the guy in degree $(3, 3)$ (i.e., hits $\eta^3$), leaving behind the subgroup of $2$-divisible elements.  (How on earth is the existence of this differential proven?)  See Lennart Meier's talk notes, or the photograph I took of Justin's blackboard.
+
+\section{$\pi_* ku^{hC_2}$}
+
+Essentially the same computation, but there's an extra diagonal vanishing line.  This means some elements in negative degrees $-4n$ get missed, and so we don't get $ko$, which has no homotopy in negative degrees.
+
+
+\section{$\pi_* L_{K(1)} S^0_{(3)}$, $\pi_* L_{K(2)} S^0_{(5)}$}
+
+Hopkins-Miller says $E_n^{hS_n} = L_{K(n)} S^0$.  This computation is accessible for $n = 1$ for sure, but may not involve much of a spectral sequence argument...  It does involve the spectral sequence for composing fixed point functors, but it relies on degeneration.
+
+The $K(2)$-local sphere is ridiculous (Shimomura-Wang, Behrens, ...), but maybe \emph{something} can useful can be said about it without too much hassle.  It may have to get downgraded to a picture.

@@ -1,0 +1,186 @@
+\advancetoleft
+\section{$H^* \CP^\infty$ redux}
+\vspace*{\fill}
+Consider the spherical fibration \[S^1 \to \mathbb{C}^\infty \setminus \{0\} \to \mathbb{C}\mathrm{P}^\infty.\]  The total space, $\mathbb{C}^\infty \setminus \{0\} \simeq S^\infty$, is contractible, hence has vanishing cohomology.  The fiber $S^1$ has known cohomology groups, $H^*(S^1; \mathbb{Z}) = \Lambda[e]$.  We know that, $\mathbb{C}\mathbb{P}^\infty$ is connected, and hence we can compute, $H^0(\mathbb{C}\mathbb{P}^\infty; H^* S^1)$ --- it has two free, generators $1$ and $e$ in $q$-degrees $0$ and $1$.\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+\begin{tikzpicture}[group/.style={},auto]
+\draw[use as bounding box,white] (-1.000000, -1.000000) rectangle (9.000000,6.000000);
+\path [draw, gray!50, very thin] (0.000000, 0.000000) grid (8.000000, 5.000000);
+\draw[->,gray!50,thin] (0, 0) to (9.000000, 0);
+\draw[->,gray!50,thin] (0, 0) to (0, 6.000000);
+\node[label,gray!50] at (0, -0.5) {$0$};
+\node[label,gray!50] at (1, -0.5) {$1$};
+\node[label,gray!50] at (2, -0.5) {$2$};
+\node[label,gray!50] at (3, -0.5) {$3$};
+\node[label,gray!50] at (4, -0.5) {$4$};
+\node[label,gray!50] at (5, -0.5) {$5$};
+\node[label,gray!50] at (6, -0.5) {$6$};
+\node[label,gray!50] at (7, -0.5) {$7$};
+\node[label,gray!50] at (8, -0.5) {$8$};
+\node[label,gray!50] at (9.000000, -0.5) {$p$};
+\node[label,gray!50] at (-0.5, 0) {$0$};
+\node[label,gray!50] at (-0.5, 1) {$1$};
+\node[label,gray!50] at (-0.5, 2) {$2$};
+\node[label,gray!50] at (-0.5, 3) {$3$};
+\node[label,gray!50] at (-0.5, 4) {$4$};
+\node[label,gray!50] at (-0.5, 5) {$5$};
+\node[label,gray!50] at (-0.5, 6.000000) {$q$};
+\begin{scope}
+\clip (-2.000000, 0.000000) rectangle (8.000000, 5.000000);
+\end{scope}
+\node[group] (one) at (0.000000, 0.000000) {$\mathbb{Z}$};
+\node[group,color=red] (e) at (0.000000, 1.000000) {$\mathbb{Z}$};
+\node[label,color=red,left=of e] {$e$};
+\end{tikzpicture}
+\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+The Serre spectral sequence associated to a singular
+    theory is a first-quadrant spectral sequence, and hence $E_2^{p, q} = 0$
+    whenever $p$ or $q$ is negative.  The differentials have the type signature
+    \[d_r: E_r^{p, q} 	o E_r^{p+r, q-r+1}\] and hence if the class $e$ is to be
+    killed by a differential --- and it must, since $H^*(S^\infty, \mathbb{Z})
+    = \mathbb{Z}$ --- it must happen on this page.  Therefore, there must be a
+class $x$ in $E_2^{2, 0} = H^2(\mathbb{C}\mathrm{P}^\infty; H^0(S^1;
+\mathbb{Z}))$ with $d_2(e) = x$.\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+\begin{tikzpicture}[group/.style={},auto]
+\draw[use as bounding box,white] (-1.000000, -1.000000) rectangle (9.000000,6.000000);
+\path [draw, gray!50, very thin] (0.000000, 0.000000) grid (8.000000, 5.000000);
+\draw[->,gray!50,thin] (0, 0) to (9.000000, 0);
+\draw[->,gray!50,thin] (0, 0) to (0, 6.000000);
+\node[label,gray!50] at (0, -0.5) {$0$};
+\node[label,gray!50] at (1, -0.5) {$1$};
+\node[label,gray!50] at (2, -0.5) {$2$};
+\node[label,gray!50] at (3, -0.5) {$3$};
+\node[label,gray!50] at (4, -0.5) {$4$};
+\node[label,gray!50] at (5, -0.5) {$5$};
+\node[label,gray!50] at (6, -0.5) {$6$};
+\node[label,gray!50] at (7, -0.5) {$7$};
+\node[label,gray!50] at (8, -0.5) {$8$};
+\node[label,gray!50] at (9.000000, -0.5) {$p$};
+\node[label,gray!50] at (-0.5, 0) {$0$};
+\node[label,gray!50] at (-0.5, 1) {$1$};
+\node[label,gray!50] at (-0.5, 2) {$2$};
+\node[label,gray!50] at (-0.5, 3) {$3$};
+\node[label,gray!50] at (-0.5, 4) {$4$};
+\node[label,gray!50] at (-0.5, 5) {$5$};
+\node[label,gray!50] at (-0.5, 6.000000) {$q$};
+\node[group] (e) at (0.000000, 1.000000) {$\mathbb{Z}$};
+\node[label,left=of e] {$e$};
+\node[group] (one) at (0.000000, 0.000000) {$\mathbb{Z}$};
+\begin{scope}
+\clip (-2.000000, 0.000000) rectangle (8.000000, 5.000000);
+\end{scope}
+\node[group,color=red] (x) at (2.000000, 0.000000) {$\mathbb{Z}$};
+\node[label,color=red,below=of x] {$x$};
+\draw[->,color=red] (e) to (x);
+\end{tikzpicture}
+\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+But, if $E_2^{2, 0} =
+        H^2(\mathbb{C}\mathrm{P}^\infty; H^0(S^1; \mathbb{Z}))$ is nonzero,
+        then $E_2^{2, 1} = H^2(\mathbb{C}\mathrm{P}^\infty; H^1(S^1;
+        \mathbb{Z}))$ is also nonzero, since $H^0(S^1; \mathbb{Z}) \cong
+        H^1(S^1; \mathbb{Z}) \cong \mathbb{Z}$.  The Serre spectral sequence
+        is multiplicative, and so we already have a name for this element: $e
+        \cdot x$.  Moreover, $d_2$ is a derivation, so \begin{align*} d_2(e
+        \cdot x) & = d_2(e) \cdot x + (-1) e \cdot d_2(x) \ & = x^2 + 0 =
+        x^2. \end{align*}  For degree reasons, $e \cdot x$ must also be killed
+        on the $E_2$-page, and hence $x^2$ must exist in $E_2^{4, 0}$.  This
+        pattern continues, as $d_2(e \cdot x^n) = x^{n+1} + (-1) e \cdot n
+        x^{n-1} \cdot 0 = x^{n+1}$.\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+\begin{tikzpicture}[group/.style={},auto]
+\draw[use as bounding box,white] (-1.000000, -1.000000) rectangle (9.000000,6.000000);
+\path [draw, gray!50, very thin] (0.000000, 0.000000) grid (8.000000, 5.000000);
+\draw[->,gray!50,thin] (0, 0) to (9.000000, 0);
+\draw[->,gray!50,thin] (0, 0) to (0, 6.000000);
+\node[label,gray!50] at (0, -0.5) {$0$};
+\node[label,gray!50] at (1, -0.5) {$1$};
+\node[label,gray!50] at (2, -0.5) {$2$};
+\node[label,gray!50] at (3, -0.5) {$3$};
+\node[label,gray!50] at (4, -0.5) {$4$};
+\node[label,gray!50] at (5, -0.5) {$5$};
+\node[label,gray!50] at (6, -0.5) {$6$};
+\node[label,gray!50] at (7, -0.5) {$7$};
+\node[label,gray!50] at (8, -0.5) {$8$};
+\node[label,gray!50] at (9.000000, -0.5) {$p$};
+\node[label,gray!50] at (-0.5, 0) {$0$};
+\node[label,gray!50] at (-0.5, 1) {$1$};
+\node[label,gray!50] at (-0.5, 2) {$2$};
+\node[label,gray!50] at (-0.5, 3) {$3$};
+\node[label,gray!50] at (-0.5, 4) {$4$};
+\node[label,gray!50] at (-0.5, 5) {$5$};
+\node[label,gray!50] at (-0.5, 6.000000) {$q$};
+\node[group] (x) at (2.000000, 0.000000) {$\mathbb{Z}$};
+\node[label,below=of x] {$x$};
+\node[group] (e) at (0.000000, 1.000000) {$\mathbb{Z}$};
+\node[label,left=of e] {$e$};
+\node[group] (one) at (0.000000, 0.000000) {$\mathbb{Z}$};
+\begin{scope}
+\clip (-2.000000, 0.000000) rectangle (8.000000, 5.000000);
+\draw[->] (e) to (x);
+\end{scope}
+\node[group,color=red] (x2) at (4.000000, 0.000000) {$\mathbb{Z}$};
+\node[label,color=red,below=of x2] {$x^2$};
+\node[group,color=red] (ex1) at (2.000000, 1.000000) {$\mathbb{Z}$};
+\draw[->,color=red] (ex1) to (x2);
+\node[group,color=red] (x3) at (6.000000, 0.000000) {$\mathbb{Z}$};
+\node[label,color=red,below=of x3] {$x^3$};
+\node[group,color=red] (ex2) at (4.000000, 1.000000) {$\mathbb{Z}$};
+\draw[->,color=red] (ex2) to (x3);
+\node[group,color=red] (x4) at (8.000000, 0.000000) {$\mathbb{Z}$};
+\node[label,color=red,below=of x4] {$x^4$};
+\node[group,color=red] (ex3) at (6.000000, 1.000000) {$\mathbb{Z}$};
+\draw[->,color=red] (ex3) to (x4);
+\node[group,color=red] (ex4) at (8.000000, 1.000000) {$\mathbb{Z}$};
+\end{tikzpicture}
+\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+To build the $E_3$ page, we take cohomology with the
+    $d_2$ differentials, and we find nothing left but $1$ in the spectral
+    sequence.  Hence, $E_3 \cong E_\infty$, and the spectral sequence
+    collapses at $E_3$.
+
+    Recall that $E_2^{p, 0} = H^p(\mathbb{C}\mathrm{P}^\infty; H^0(S^1;
+    \mathbb{Z})) = H^p(\mathbb{C}\mathrm{P}^\infty; \mathbb{Z})$.  So, we
+    can now read off the cohomology of $\mathbb{C}\mathrm{P}^\infty$,
+    together with its ring structure: \[H^*(\mathbb{C}\mathrm{P}^\infty;
+    \mathbb{Z}) \cong \mathbb{Z}[x],\] where $|x| = 2$.\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+\begin{tikzpicture}[group/.style={},auto]
+\draw[use as bounding box,white] (-1.000000, -1.000000) rectangle (9.000000,6.000000);
+\path [draw, gray!50, very thin] (0.000000, 0.000000) grid (8.000000, 5.000000);
+\draw[->,gray!50,thin] (0, 0) to (9.000000, 0);
+\draw[->,gray!50,thin] (0, 0) to (0, 6.000000);
+\node[label,gray!50] at (0, -0.5) {$0$};
+\node[label,gray!50] at (1, -0.5) {$1$};
+\node[label,gray!50] at (2, -0.5) {$2$};
+\node[label,gray!50] at (3, -0.5) {$3$};
+\node[label,gray!50] at (4, -0.5) {$4$};
+\node[label,gray!50] at (5, -0.5) {$5$};
+\node[label,gray!50] at (6, -0.5) {$6$};
+\node[label,gray!50] at (7, -0.5) {$7$};
+\node[label,gray!50] at (8, -0.5) {$8$};
+\node[label,gray!50] at (9.000000, -0.5) {$p$};
+\node[label,gray!50] at (-0.5, 0) {$0$};
+\node[label,gray!50] at (-0.5, 1) {$1$};
+\node[label,gray!50] at (-0.5, 2) {$2$};
+\node[label,gray!50] at (-0.5, 3) {$3$};
+\node[label,gray!50] at (-0.5, 4) {$4$};
+\node[label,gray!50] at (-0.5, 5) {$5$};
+\node[label,gray!50] at (-0.5, 6.000000) {$q$};
+\node[group] (one) at (0.000000, 0.000000) {$\mathbb{Z}$};
+\begin{scope}
+\clip (-2.000000, 0.000000) rectangle (8.000000, 5.000000);
+\end{scope}
+\end{tikzpicture}
+\vspace*{\fill}
+\newpage

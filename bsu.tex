@@ -1,0 +1,327 @@
+\advancetoleft
+\advancetoleft
+\section{Unitary groups}
+\vspace*{\fill}
+Now we will compute the cohomology $H^* BSU$ by
+    inductively analyzing related spaces.  We begin by computing the cohomology
+    rings $H^* U(n)$, where our primary tool is the fibration \[U(n-1) \to
+    U(n) \to \mathbb{C}^{2n} \setminus \{0\} \simeq S^{2n-1}.\]  We
+    identify $U(1) \simeq S^1$, which has cohomology $H^* U(1) = \Lambda[e_1]$
+    for $|e_1| = 1$.  In general, we claim that $H^* U(n) = \bigotimes_{i \ge
+    1} \Lambda[e_{2i-1}]$.  Let's consider the case $n = 3$, for example, whose
+    spectral sequence is illustrated at left.
+    
+    This spectral sequence collapses at this page, using an analysis in two
+    parts.  Firstly, consider the indecomposable elements in the fiber column:
+    they are all of odd degree, of dimension bounded by $2n-3$.  To support a
+    differential, they must cross a large gap to reach the groups in the
+    right-hand column, a distance of $2n-1$ across.  This means that
+    differentials can occur only on the $E_{2n-1}$-page, of signature $d_{2n-1}:
+    E_{2n-1}^{0, q} \to E_{2n-1}^{2n-1, q - 2n}$.  The shift in vertical
+    grading forces the differential to land below the $p$-axis, and so it cannot
+    exist!
+
+    Secondly, for any decomposable element $\prod_{i \in I} e_i$, we can apply
+    the Leibniz rule to get \[d\left( \prod_{i \in I} e_I \right) =
+    \sum_{i \in I} \pm d(e_i) \prod_{\substack{j \in I \\ j \ne i}}
+    e_j.\]  We just showed that $d(e_i) = 0$ for any $i$, and so the sum
+    collapses, determining all those differentials to be zero as well.\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+\begin{tikzpicture}[group/.style={},auto]
+\draw[use as bounding box,white] (-1.000000, -1.000000) rectangle (7.000000,11.000000);
+\path [draw, gray!50, very thin] (0.000000, 0.000000) grid (6.000000, 10.000000);
+\draw[->,gray!50,thin] (0, 0) to (7.000000, 0);
+\draw[->,gray!50,thin] (0, 0) to (0, 11.000000);
+\node[label,gray!50] at (0, -0.5) {$0$};
+\node[label,gray!50] at (1, -0.5) {$1$};
+\node[label,gray!50] at (2, -0.5) {$2$};
+\node[label,gray!50] at (3, -0.5) {$3$};
+\node[label,gray!50] at (4, -0.5) {$4$};
+\node[label,gray!50] at (5, -0.5) {$5$};
+\node[label,gray!50] at (6, -0.5) {$6$};
+\node[label,gray!50] at (7.000000, -0.5) {$p$};
+\node[label,gray!50] at (-0.5, 0) {$0$};
+\node[label,gray!50] at (-0.5, 1) {$1$};
+\node[label,gray!50] at (-0.5, 2) {$2$};
+\node[label,gray!50] at (-0.5, 3) {$3$};
+\node[label,gray!50] at (-0.5, 4) {$4$};
+\node[label,gray!50] at (-0.5, 5) {$5$};
+\node[label,gray!50] at (-0.5, 6) {$6$};
+\node[label,gray!50] at (-0.5, 7) {$7$};
+\node[label,gray!50] at (-0.5, 8) {$8$};
+\node[label,gray!50] at (-0.5, 9) {$9$};
+\node[label,gray!50] at (-0.5, 10) {$10$};
+\node[label,gray!50] at (-0.5, 11.000000) {$q$};
+\begin{scope}
+\clip (-2.000000, 0.000000) rectangle (6.000000, 10.000000);
+\end{scope}
+\node[group] (one) at (0.000000, 0.000000) {$\Z$};
+\node[group] (e1) at (0.000000, 1.000000) {$\Z$};
+\node[label,left=of e1] {$e_1$};
+\node[group] (e3) at (0.000000, 3.000000) {$\Z$};
+\node[label,left=of e3] {$e_3$};
+\node[group] (e1e3) at (0.000000, 4.000000) {$\Z$};
+\node[label,left=of e1e3] {$e_1e_3$};
+\node[group] (e5) at (5.000000, 0.000000) {$\Z$};
+\node[label,below=of e5] {$e_5$};
+\node[group] (e1e5) at (5.000000, 1.000000) {$\Z$};
+\node[group] (e3e5) at (5.000000, 3.000000) {$\Z$};
+\node[group] (e1e3e5) at (5.000000, 4.000000) {$\Z$};
+\end{tikzpicture}
+\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+Next, we compute the cohomologies $H^* BU(n)$ using
+    the fibration $U(n) \to EU(n) \to BU(n)$, where $EU(n) \simeq
+    \pt$.  This is very similar to the computation for $\CP^\infty$,
+    since the fiber sequence $S^1 \to \C^\infty \setminus \{0\} \to
+    \CP^\infty$ is equivalent to $U(1) \to EU(1) \to BU(1)$.  Since the
+    total space is contractible, the goal in this game is to clear the board
+    by introducing classes in $H^* BU(n)$ to delete the classes already
+    present coming from $H^* U(n)$.
+    
+    At left, we consider the bottom of this spectral sequence for $n \ge 4$. We
+    have one chance to delete the class $e_1$, by introducing a class $x_1 \in
+    H^* BU(n)$ on page $E_2$, with differential $d(e_1) = x_1$.  Application of
+    the Leibniz rule yields a whole host of resulting differentials.\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+\begin{tikzpicture}[group/.style={},auto]
+\draw[use as bounding box,white] (-1.000000, -1.000000) rectangle (11.000000,10.000000);
+\path [draw, gray!50, very thin] (0.000000, 0.000000) grid (10.000000, 9.000000);
+\draw[->,gray!50,thin] (0, 0) to (11.000000, 0);
+\draw[->,gray!50,thin] (0, 0) to (0, 10.000000);
+\node[label,gray!50] at (0, -0.5) {$0$};
+\node[label,gray!50] at (1, -0.5) {$1$};
+\node[label,gray!50] at (2, -0.5) {$2$};
+\node[label,gray!50] at (3, -0.5) {$3$};
+\node[label,gray!50] at (4, -0.5) {$4$};
+\node[label,gray!50] at (5, -0.5) {$5$};
+\node[label,gray!50] at (6, -0.5) {$6$};
+\node[label,gray!50] at (7, -0.5) {$7$};
+\node[label,gray!50] at (8, -0.5) {$8$};
+\node[label,gray!50] at (9, -0.5) {$9$};
+\node[label,gray!50] at (10, -0.5) {$10$};
+\node[label,gray!50] at (11.000000, -0.5) {$p$};
+\node[label,gray!50] at (-0.5, 0) {$0$};
+\node[label,gray!50] at (-0.5, 1) {$1$};
+\node[label,gray!50] at (-0.5, 2) {$2$};
+\node[label,gray!50] at (-0.5, 3) {$3$};
+\node[label,gray!50] at (-0.5, 4) {$4$};
+\node[label,gray!50] at (-0.5, 5) {$5$};
+\node[label,gray!50] at (-0.5, 6) {$6$};
+\node[label,gray!50] at (-0.5, 7) {$7$};
+\node[label,gray!50] at (-0.5, 8) {$8$};
+\node[label,gray!50] at (-0.5, 9) {$9$};
+\node[label,gray!50] at (-0.5, 10.000000) {$q$};
+\begin{scope}
+\clip (-2.000000, 0.000000) rectangle (10.000000, 9.000000);
+\end{scope}
+\node[group] (one) at (0.000000, 0.000000) {$\Z$};
+\node[group,color=red] (x11) at (2.000000, 0.000000) {$\Z$};
+\node[label,color=red,below=of x11] {$x_1$};
+\node[group,color=red] (x12) at (4.000000, 0.000000) {$\Z$};
+\node[label,color=red,below=of x12] {$x_1^2$};
+\node[group,color=red] (x13) at (6.000000, 0.000000) {$\Z$};
+\node[label,color=red,below=of x13] {$x_1^3$};
+\node[group,color=red] (x14) at (8.000000, 0.000000) {$\Z$};
+\node[label,color=red,below=of x14] {$x_1^4$};
+\node[group,color=red] (x15) at (10.000000, 0.000000) {$\Z$};
+\node[label,color=red,below=of x15] {$x_1^5$};
+\node[group] (e9) at (0.000000, 9.000000) {$\Z$};
+\node[label,left=of e9] {$e_9$};
+\node[group,color=red] (e9x11) at (2.000000, 9.000000) {$\Z$};
+\node[group,color=red] (e9x12) at (4.000000, 9.000000) {$\Z$};
+\node[group,color=red] (e9x13) at (6.000000, 9.000000) {$\Z$};
+\node[group,color=red] (e9x14) at (8.000000, 9.000000) {$\Z$};
+\node[group,color=red] (e9x15) at (10.000000, 9.000000) {$\Z$};
+\node[group] (e7) at (0.000000, 7.000000) {$\Z$};
+\node[label,left=of e7] {$e_7$};
+\node[group,color=red] (e7x11) at (2.000000, 7.000000) {$\Z$};
+\node[group,color=red] (e7x12) at (4.000000, 7.000000) {$\Z$};
+\node[group,color=red] (e7x13) at (6.000000, 7.000000) {$\Z$};
+\node[group,color=red] (e7x14) at (8.000000, 7.000000) {$\Z$};
+\node[group,color=red] (e7x15) at (10.000000, 7.000000) {$\Z$};
+\node[group] (e5) at (0.000000, 5.000000) {$\Z$};
+\node[label,left=of e5] {$e_5$};
+\node[group,color=red] (e5x11) at (2.000000, 5.000000) {$\Z$};
+\node[group,color=red] (e5x12) at (4.000000, 5.000000) {$\Z$};
+\node[group,color=red] (e5x13) at (6.000000, 5.000000) {$\Z$};
+\node[group,color=red] (e5x14) at (8.000000, 5.000000) {$\Z$};
+\node[group,color=red] (e5x15) at (10.000000, 5.000000) {$\Z$};
+\node[group] (e3) at (0.000000, 3.000000) {$\Z$};
+\node[label,left=of e3] {$e_3$};
+\node[group,color=red] (e3x11) at (2.000000, 3.000000) {$\Z$};
+\node[group,color=red] (e3x12) at (4.000000, 3.000000) {$\Z$};
+\node[group,color=red] (e3x13) at (6.000000, 3.000000) {$\Z$};
+\node[group,color=red] (e3x14) at (8.000000, 3.000000) {$\Z$};
+\node[group,color=red] (e3x15) at (10.000000, 3.000000) {$\Z$};
+\node[group] (e3e7) at (0.000000, 10.000000) {$\Z$};
+\node[label,left=of e3e7] {$e_3e_7$};
+\node[group,color=red] (e3e7x11) at (2.000000, 10.000000) {$\Z$};
+\node[group,color=red] (e3e7x12) at (4.000000, 10.000000) {$\Z$};
+\node[group,color=red] (e3e7x13) at (6.000000, 10.000000) {$\Z$};
+\node[group,color=red] (e3e7x14) at (8.000000, 10.000000) {$\Z$};
+\node[group,color=red] (e3e7x15) at (10.000000, 10.000000) {$\Z$};
+\node[group] (e3e5) at (0.000000, 8.000000) {$\Z$};
+\node[label,left=of e3e5] {$e_3e_5$};
+\node[group,color=red] (e3e5x11) at (2.000000, 8.000000) {$\Z$};
+\node[group,color=red] (e3e5x12) at (4.000000, 8.000000) {$\Z$};
+\node[group,color=red] (e3e5x13) at (6.000000, 8.000000) {$\Z$};
+\node[group,color=red] (e3e5x14) at (8.000000, 8.000000) {$\Z$};
+\node[group,color=red] (e3e5x15) at (10.000000, 8.000000) {$\Z$};
+\node[group,color=red] (e1) at (0.000000, 1.000000) {$\Z$};
+\node[label,color=red,left=of e1] {$e_1$};
+\draw[->,color=red] (e1) to (x11);
+\node[group,color=red] (e1x11) at (2.000000, 1.000000) {$\Z$};
+\draw[->,color=red] (e1x11) to (x12);
+\node[group,color=red] (e1x12) at (4.000000, 1.000000) {$\Z$};
+\draw[->,color=red] (e1x12) to (x13);
+\node[group,color=red] (e1x13) at (6.000000, 1.000000) {$\Z$};
+\draw[->,color=red] (e1x13) to (x14);
+\node[group,color=red] (e1x14) at (8.000000, 1.000000) {$\Z$};
+\draw[->,color=red] (e1x14) to (x15);
+\node[group,color=red] (e1x15) at (10.000000, 1.000000) {$\Z$};
+\node[group,color=red] (e1e9) at (0.150000, 10.300000) {$\Z$};
+\node[label,color=red,left=of e1e9] {$e_1e_9$};
+\draw[->,color=red] (e1e9) to (e9x11);
+\node[group,color=red] (e1e9x11) at (2.150000, 10.300000) {$\Z$};
+\draw[->,color=red] (e1e9x11) to (e9x12);
+\node[group,color=red] (e1e9x12) at (4.150000, 10.300000) {$\Z$};
+\draw[->,color=red] (e1e9x12) to (e9x13);
+\node[group,color=red] (e1e9x13) at (6.150000, 10.300000) {$\Z$};
+\draw[->,color=red] (e1e9x13) to (e9x14);
+\node[group,color=red] (e1e9x14) at (8.150000, 10.300000) {$\Z$};
+\draw[->,color=red] (e1e9x14) to (e9x15);
+\node[group,color=red] (e1e9x15) at (10.150000, 10.300000) {$\Z$};
+\node[group,color=red] (e1e7) at (0.150000, 8.300000) {$\Z$};
+\node[label,color=red,left=of e1e7] {$e_1e_7$};
+\draw[->,color=red] (e1e7) to (e7x11);
+\node[group,color=red] (e1e7x11) at (2.150000, 8.300000) {$\Z$};
+\draw[->,color=red] (e1e7x11) to (e7x12);
+\node[group,color=red] (e1e7x12) at (4.150000, 8.300000) {$\Z$};
+\draw[->,color=red] (e1e7x12) to (e7x13);
+\node[group,color=red] (e1e7x13) at (6.150000, 8.300000) {$\Z$};
+\draw[->,color=red] (e1e7x13) to (e7x14);
+\node[group,color=red] (e1e7x14) at (8.150000, 8.300000) {$\Z$};
+\draw[->,color=red] (e1e7x14) to (e7x15);
+\node[group,color=red] (e1e7x15) at (10.150000, 8.300000) {$\Z$};
+\node[group,color=red] (e1e5) at (0.000000, 6.000000) {$\Z$};
+\node[label,color=red,left=of e1e5] {$e_1e_5$};
+\draw[->,color=red] (e1e5) to (e5x11);
+\node[group,color=red] (e1e5x11) at (2.000000, 6.000000) {$\Z$};
+\draw[->,color=red] (e1e5x11) to (e5x12);
+\node[group,color=red] (e1e5x12) at (4.000000, 6.000000) {$\Z$};
+\draw[->,color=red] (e1e5x12) to (e5x13);
+\node[group,color=red] (e1e5x13) at (6.000000, 6.000000) {$\Z$};
+\draw[->,color=red] (e1e5x13) to (e5x14);
+\node[group,color=red] (e1e5x14) at (8.000000, 6.000000) {$\Z$};
+\draw[->,color=red] (e1e5x14) to (e5x15);
+\node[group,color=red] (e1e5x15) at (10.000000, 6.000000) {$\Z$};
+\node[group,color=red] (e1e3) at (0.000000, 4.000000) {$\Z$};
+\node[label,color=red,left=of e1e3] {$e_1e_3$};
+\draw[->,color=red] (e1e3) to (e3x11);
+\node[group,color=red] (e1e3x11) at (2.000000, 4.000000) {$\Z$};
+\draw[->,color=red] (e1e3x11) to (e3x12);
+\node[group,color=red] (e1e3x12) at (4.000000, 4.000000) {$\Z$};
+\draw[->,color=red] (e1e3x12) to (e3x13);
+\node[group,color=red] (e1e3x13) at (6.000000, 4.000000) {$\Z$};
+\draw[->,color=red] (e1e3x13) to (e3x14);
+\node[group,color=red] (e1e3x14) at (8.000000, 4.000000) {$\Z$};
+\draw[->,color=red] (e1e3x14) to (e3x15);
+\node[group,color=red] (e1e3x15) at (10.000000, 4.000000) {$\Z$};
+\node[group,color=red] (e1e3e7) at (0.000000, 11.000000) {$\Z$};
+\node[label,color=red,left=of e1e3e7] {$e_1e_3e_7$};
+\draw[->,color=red] (e1e3e7) to (e3e7x11);
+\node[group,color=red] (e1e3e7x11) at (2.000000, 11.000000) {$\Z$};
+\draw[->,color=red] (e1e3e7x11) to (e3e7x12);
+\node[group,color=red] (e1e3e7x12) at (4.000000, 11.000000) {$\Z$};
+\draw[->,color=red] (e1e3e7x12) to (e3e7x13);
+\node[group,color=red] (e1e3e7x13) at (6.000000, 11.000000) {$\Z$};
+\draw[->,color=red] (e1e3e7x13) to (e3e7x14);
+\node[group,color=red] (e1e3e7x14) at (8.000000, 11.000000) {$\Z$};
+\draw[->,color=red] (e1e3e7x14) to (e3e7x15);
+\node[group,color=red] (e1e3e7x15) at (10.000000, 11.000000) {$\Z$};
+\node[group,color=red] (e1e3e5) at (0.150000, 9.300000) {$\Z$};
+\node[label,color=red,left=of e1e3e5] {$e_1e_3e_5$};
+\draw[->,color=red] (e1e3e5) to (e3e5x11);
+\node[group,color=red] (e1e3e5x11) at (2.150000, 9.300000) {$\Z$};
+\draw[->,color=red] (e1e3e5x11) to (e3e5x12);
+\node[group,color=red] (e1e3e5x12) at (4.150000, 9.300000) {$\Z$};
+\draw[->,color=red] (e1e3e5x12) to (e3e5x13);
+\node[group,color=red] (e1e3e5x13) at (6.150000, 9.300000) {$\Z$};
+\draw[->,color=red] (e1e3e5x13) to (e3e5x14);
+\node[group,color=red] (e1e3e5x14) at (8.150000, 9.300000) {$\Z$};
+\draw[->,color=red] (e1e3e5x14) to (e3e5x15);
+\node[group,color=red] (e1e3e5x15) at (10.150000, 9.300000) {$\Z$};
+\end{tikzpicture}
+\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+blah.\vspace*{\fill}
+\newpage
+\vspace*{\fill}
+\begin{tikzpicture}[group/.style={},auto]
+\draw[use as bounding box,white] (-1.000000, -1.000000) rectangle (11.000000,10.000000);
+\path [draw, gray!50, very thin] (0.000000, 0.000000) grid (10.000000, 9.000000);
+\draw[->,gray!50,thin] (0, 0) to (11.000000, 0);
+\draw[->,gray!50,thin] (0, 0) to (0, 10.000000);
+\node[label,gray!50] at (0, -0.5) {$0$};
+\node[label,gray!50] at (1, -0.5) {$1$};
+\node[label,gray!50] at (2, -0.5) {$2$};
+\node[label,gray!50] at (3, -0.5) {$3$};
+\node[label,gray!50] at (4, -0.5) {$4$};
+\node[label,gray!50] at (5, -0.5) {$5$};
+\node[label,gray!50] at (6, -0.5) {$6$};
+\node[label,gray!50] at (7, -0.5) {$7$};
+\node[label,gray!50] at (8, -0.5) {$8$};
+\node[label,gray!50] at (9, -0.5) {$9$};
+\node[label,gray!50] at (10, -0.5) {$10$};
+\node[label,gray!50] at (11.000000, -0.5) {$p$};
+\node[label,gray!50] at (-0.5, 0) {$0$};
+\node[label,gray!50] at (-0.5, 1) {$1$};
+\node[label,gray!50] at (-0.5, 2) {$2$};
+\node[label,gray!50] at (-0.5, 3) {$3$};
+\node[label,gray!50] at (-0.5, 4) {$4$};
+\node[label,gray!50] at (-0.5, 5) {$5$};
+\node[label,gray!50] at (-0.5, 6) {$6$};
+\node[label,gray!50] at (-0.5, 7) {$7$};
+\node[label,gray!50] at (-0.5, 8) {$8$};
+\node[label,gray!50] at (-0.5, 9) {$9$};
+\node[label,gray!50] at (-0.5, 10.000000) {$q$};
+\node[group] (e3e5) at (0.000000, 8.000000) {$\Z$};
+\node[label,left=of e3e5] {$e_3e_5$};
+\node[group] (e3) at (0.000000, 3.000000) {$\Z$};
+\node[label,left=of e3] {$e_3$};
+\node[group] (e5) at (0.000000, 5.000000) {$\Z$};
+\node[label,left=of e5] {$e_5$};
+\node[group] (e7) at (0.000000, 7.000000) {$\Z$};
+\node[label,left=of e7] {$e_7$};
+\node[group] (e9) at (0.000000, 9.000000) {$\Z$};
+\node[label,left=of e9] {$e_9$};
+\node[group] (one) at (0.000000, 0.000000) {$\Z$};
+\begin{scope}
+\clip (-2.000000, 0.000000) rectangle (10.000000, 9.000000);
+\end{scope}
+\node[group,color=red] (x21) at (4.150000, 0.300000) {$\Z$};
+\node[label,color=red,below=of x21] {$x_2$};
+\node[group,color=red] (x22) at (8.150000, 0.300000) {$\Z$};
+\node[label,color=red,below=of x22] {$x_2^2$};
+\node[group,color=red] (e9x21) at (4.150000, 9.300000) {$\Z$};
+\node[group,color=red] (e9x22) at (8.150000, 9.300000) {$\Z$};
+\node[group,color=red] (e7x21) at (4.150000, 7.300000) {$\Z$};
+\node[group,color=red] (e7x22) at (8.150000, 7.300000) {$\Z$};
+\node[group,color=red] (e5x21) at (4.150000, 5.300000) {$\Z$};
+\node[group,color=red] (e5x22) at (8.150000, 5.300000) {$\Z$};
+\draw[->,color=red] (e3) to (x21);
+\node[group,color=red] (e3x21) at (4.150000, 3.300000) {$\Z$};
+\draw[->,color=red] (e3x21) to (x22);
+\node[group,color=red] (e3x22) at (8.150000, 3.300000) {$\Z$};
+\draw[->,color=red] (e3e5) to (e5x21);
+\node[group,color=red] (e3e5x21) at (4.150000, 8.300000) {$\Z$};
+\draw[->,color=red] (e3e5x21) to (e5x22);
+\node[group,color=red] (e3e5x22) at (8.150000, 8.300000) {$\Z$};
+\end{tikzpicture}
+\vspace*{\fill}
+\newpage
